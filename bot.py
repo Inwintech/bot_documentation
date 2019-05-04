@@ -10,6 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
 def greet_user(bot, update):
     text = 'Вызван /start'
     logging.info(text)
+    #logging.info(text)
     update.message.reply_text(text)
 
 def talk_to_me(bot, update):
