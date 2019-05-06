@@ -2,3 +2,4 @@
 env
 .vscode
 settings.py
+__pycache__
