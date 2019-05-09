@@ -28,4 +28,5 @@ EmoBot - простой бот для Telegram
 В активированном виртуальном окружении выполните:
 
 .. code-block:: python
+
     python3 bot.py
