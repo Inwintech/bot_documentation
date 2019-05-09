@@ -1,10 +1,11 @@
 from glob import glob
 from random import choice
+import os
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, RegexHandler, Filters
 
-from utils import get_keyboard, get_user_emo
+from utils import get_keyboard, get_user_emo, is_emot
 
 def greet_user(bot, update, user_data):
     emo = get_user_emo(user_data)
@@ -38,3 +39,18 @@ def get_contact(bot, update, user_data):
 def get_location(bot, update, user_data):
     print(update.message.location)
     update.message.reply_text('Готово: {}'.format(get_user_emo(user_data)),reply_markup=get_keyboard())
+
+def check_user_photo(bot, update, user_data):
+    update.message.reply_text("Обрабатываю фото")
+    os.makedirs('downloads', exist_ok=True)
+    photo_file = bot.getFile(update.message.photo[-1].file_id)
+    filename = os.path.join('downloads', '{}.jpg'.format(photo_file.file_id))
+    photo_file.download(filename)
+    if is_emot(filename):
+        update.message.reply_text("Обнаружен скэтч, добавляю в библиотеку")
+        new_filename = os.path.join('images', 'emot_{}.jpg'.format(photo_file.file_id))
+        os.rename(filename, new_filename)
+    else:
+        os.remove(filename)
+        update.message.reply_text("Тревога, скэтч не обнаружен!")
+
