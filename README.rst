@@ -5,6 +5,7 @@ EmoBot - простой бот для Telegram
 
 Установка
 ---------
+
 создайте виртуальное окружение и активируйте его
 .. code-block:: text
     pip install -r requirements/develope.text
@@ -14,6 +15,7 @@ EmoBot - простой бот для Telegram
 Настройка
 ---------
 создайте файл settings.py и добавьте следующие настройки
+
 .. code-block:: python
 
     API_KEY = 'API ключ, который вы получили у BotFather'
@@ -24,5 +26,6 @@ EmoBot - простой бот для Telegram
 ------
 
 В активированном виртуальном окружении выполните:
+
 .. code-block:: python
     python3 bot.py
