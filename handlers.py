@@ -122,7 +122,7 @@ def unsubscriber(bot, update):
     else:
         update.message.reply_text('Вы не подписаны, нажмите /subscriber чтобы подписаться')
 
-def set_alarm(bot,update, agrs, job_queue):
+def set_alarm(bot, update, args, job_queue):
     try:
         seconds = abs(int(args[0]))
         job_queue.run_once(alarm, seconds, context=update.message.chat_id)
